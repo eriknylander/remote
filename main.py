@@ -9,6 +9,10 @@ class commandHandler:
 	def handleCommand(self,command):
 		if command == "play/pause":
 			self.ccc.togglePlayPause()
+		elif command == "fwd":
+			self.ccc.jump(1)
+		elif command == "rew":
+			self.ccc.jump(-1)
 		else:
 			print("Does not compute")
 

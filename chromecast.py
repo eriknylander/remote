@@ -16,3 +16,7 @@ class ChromecastController:
 			self.mc.pause()
 		else:
 			self.mc.play()
+
+	def jump(self, direction):
+		jump_to = self.mc.status.current_time + (direction * 15)
+		self.mc.seek(jump_to)
