@@ -6,29 +6,7 @@ def isControl(pos3):
 		return True
 	return False
 
-def parseCommand(ctrl1,ctrl2,command):
-	if ctrl1 == 1 and ctrl2 == 0:
-		if command == 30:
-			return "one"
-		elif command == 31:
-			return "two"
-	elif ctrl1 == 1 and ctrl2 == 1:
-		if command == 5:
-			return "prev"
-		elif command == 9:
-			return "next"
-		elif command == 19:
-			return "play/pause"
-		elif command == 22:
-			return "stop"
-	elif ctrl1 == 1 and ctrl2 == 3:
-		if command == 5:
-			return "rew"
-		elif command == 9:
-			return "fwd"
-	return "don't know yet"
-
-def setUpAndListen(handleCommand):
+def setUpAndListen():
 	dev=usb.core.find(idVendor=0x3353,idProduct=0x3713)
 
 	if dev is None:
@@ -54,8 +32,14 @@ def setUpAndListen(handleCommand):
 			r=dev.read(eaddr,8,5000)
 			if isControl(r[3]):
 				continue
-			handleCommand(parseCommand(r[0],r[1],r[3]))
+			print("New button press")
+			print(r)
 		except KeyboardInterrupt:
 			raise
 		except:
 			time.sleep(0.1)
+
+try:
+	setUpAndListen()
+except:
+	exit(0)
