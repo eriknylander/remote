@@ -46,7 +46,7 @@ def setUpAndListen(handleCommand):
 
 	while True:
 		try:
-			r=dev.read(eaddr,8)
+			r=dev.read(eaddr,8,5000)
 			if isControl(r[0],r[1]):
 				continue
 			handleCommand(parseCommand(r[0],r[1],r[3]))
