@@ -37,7 +37,7 @@ After=multi-user.target
 [Service]
 Type=simple
 Restart=always
-ExecStart=/usr/bin/python3 /home/pi/github.com/eriknylander/remote/main.py
+ExecStart=/usr/bin/python3 /path/to/main.py
 
 [Install]
 WantedBy=multi-user.target
