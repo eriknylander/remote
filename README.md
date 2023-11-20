@@ -19,7 +19,7 @@ adduser username plugdev
 ```
 3. Reload rules
 ```
-sudo udevadm control --reload)
+sudo udevadm control --reload
 sudo udevadm trigger
 ```
 
